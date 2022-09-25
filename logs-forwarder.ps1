@@ -4,13 +4,13 @@ param (
     $PAI_TOKEN,
     $EventhubNamespace,
     $FunctionAppName,
-    $ResourceGroupLocation  = "westus2",
+    $ResourceGroupLocation  = "westeurope",
     $ResourceGroupName = "packetai-log-forwarder-rg",
     $EventhubName = "packetai-eventhub",
     $FunctionName = "packetai-function",
     $DiagnosticSettingName = "packetai-activity-logs-diagnostic-setting",
     $PacketAISite = "vector-ingester-logpatterns.packetai.co",
-    $Environment = "AzureCloud",
+    $Environment = "AzureCloud"
 )
 
 if (-Not ($SubscriptionId -And $PAI_IID -And $PAI_TOKEN)) { Throw "`SubscriptionId`, `PAI_IID`, and `PAI_TOKEN` are required." }
@@ -31,7 +31,7 @@ $deploymentArgs = @{
     ResourceGroupName = $ResourceGroupName
     functionCode = $code
     PAI_IID = $securePAI_IID
-    PAI_TOKEN = $PAI_TOKEN
+    PAI_TOKEN = $securePAI_TOKEN
     location = $ResourceGroupLocation
     eventHubName = $EventhubName
     functionName = $FunctionName
